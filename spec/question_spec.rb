@@ -8,4 +8,14 @@ describe(Question) do
       expect(test_question.quiz()).to(eq(test_quiz))
     end
   end
+
+    it("validates presence of name") do
+      question = Question.create({:question => "", :quiz_id => nil})
+      expect(question.save()).to(eq(false))
+    end
+
+    it("ensures that the question is less than 100 characters long") do
+      question = Question.new({:question => "i".*(100), :quiz_id => nil})
+      expect(question.save()).to(eq(false))
+  end
 end

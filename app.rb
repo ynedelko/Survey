@@ -11,12 +11,12 @@ get('/') do
   erb(:index)
 end
 
-post('/quizzes') do
-  @quizzes = Quiz.all()
+post('/quizzes/new') do
   name = params.fetch("name")
   Quiz.create(:name => name)
-  Quiz.all()
+  @quizzes = Quiz.all()
   erb(:quizzes)
+  # redirect('/quizzes')
 end
 
 get('/quizzes') do
