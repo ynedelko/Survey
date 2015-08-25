@@ -24,10 +24,10 @@ get('/quizzes') do
   erb(:quizzes)
 end
 
-# get('/quiz/:id') do
-#   @quiz = Quiz.find(params.fetch("id").to_i())
-#   erb(:quiz)
-# end
+get('/quiz/:id') do
+  @quiz = Quiz.find(params.fetch("id").to_i())
+  erb(:quiz)
+end
 
 post('/quiz/:id') do
   @quiz = Quiz.find(params.fetch("id").to_i())
@@ -35,5 +35,39 @@ post('/quiz/:id') do
   quiz_id = params.fetch("quiz_id").to_i()
   Question.create({:question => question, :quiz_id => quiz_id})
   Question.all()
+  erb(:quiz)
+end
+
+delete('/quiz/:id/delete') do
+  @quizzes = Quiz.all()
+  @quiz = Quiz.find(params.fetch("id").to_i())
+  @quizzes.delete(@quiz)
+  erb(:quizzes)
+end
+
+get('/question/:id') do
+  @question = Question.find(params.fetch("id").to_i())
+  erb(:question)
+end
+
+delete('/question/:id/delete') do
+  @question = Question.find(params.fetch("id").to_i())
+  @quiz_id = @question.quiz.id.to_i()
+  @quiz = Quiz.find(@quiz_id)
+  @question.delete()
+  erb(:quiz)
+end
+
+patch('/question/:id/update') do
+  @question = Question.find(params.fetch("id").to_i())
+  update_question = params.fetch("update_question")
+  @question.update({:question => update_question})
+  erb(:question)
+end
+
+patch('/quiz/:id/update') do
+  @quiz = Quiz.find(params.fetch("id").to_i())
+  update_quiz = params.fetch("update_quiz")
+  @quiz.update({:name => update_quiz})
   erb(:quiz)
 end

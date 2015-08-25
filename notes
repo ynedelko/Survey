@@ -1,0 +1,7 @@
+  <!-- <form action='/quiz/<%= @quiz.id() %>/delete' method='post'>
+      <div class='form-group'>
+        <input name="_method" type="hidden" value="delete">
+        <button class='btn btn-danger'>Delete <%= @quiz.name()%></button>
+      </div>
+    </form>
+    </li> -->

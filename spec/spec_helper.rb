@@ -11,5 +11,9 @@ RSpec.configure do |config|
     Question.all().each() do |question|
       question.destroy()
     end
+
+    Quiz.all().each() do |quiz|
+      quiz.destroy()
+    end
   end
 end
