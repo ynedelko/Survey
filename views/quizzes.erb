@@ -1,0 +1,15 @@
+<% if @quizzes.any? %>
+<h3>All quizzes so far!</h3>
+
+
+<ul>
+  <% @quizzes.each() do |quiz| %>
+  <li><a href='/quiz/<%= quiz.id() %>'><%= quiz.name() %></a></li>
+  <% end %>
+</ul>
+
+<% else %>
+<p>There are no quizzes yet!</p>
+<li><button class= "btn btn-default"<a href='/'>Go add a quiz!</a></button></li>
+
+<% end %>
