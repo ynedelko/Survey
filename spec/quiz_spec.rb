@@ -14,4 +14,9 @@ describe(Quiz) do
     quiz = Quiz.create({:name => "happiness quiz"})
     expect(quiz.name()).to(eq("Happiness quiz"))
   end
+
+  it("validates presence of name") do
+    quiz = Quiz.create({:name => ""})
+    expect(quiz.save()).to(eq(false))
+  end
 end
