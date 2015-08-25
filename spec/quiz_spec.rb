@@ -9,4 +9,9 @@ describe(Quiz) do
       expect(test_quiz.questions()).to(eq([test_question1, test_question2]))
     end
   end
+
+  it("capitalizes quiz name") do
+    quiz = Quiz.create({:name => "happiness quiz"})
+    expect(quiz.name()).to(eq("Happiness quiz"))
+  end
 end
