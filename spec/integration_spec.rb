@@ -12,4 +12,9 @@ describe('quizzes path', {:type => :feature}) do
     click_button("Add your quiz!")
     expect(page).to have_content('All quizzes so far!')
   end
+  it('allows us to view quiz details') do
+    visit('/quizzes/new')
+    click_link("Love")
+    expect(page).to have_content('Love')
+  end
 end
