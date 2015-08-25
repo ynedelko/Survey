@@ -23,3 +23,17 @@ get('/quizzes') do
   @quizzes = Quiz.all()
   erb(:quizzes)
 end
+
+# get('/quiz/:id') do
+#   @quiz = Quiz.find(params.fetch("id").to_i())
+#   erb(:quiz)
+# end
+
+post('/quiz/:id') do
+  @quiz = Quiz.find(params.fetch("id").to_i())
+  question = params.fetch("question")
+  quiz_id = params.fetch("quiz_id").to_i()
+  Question.create({:question => question, :quiz_id => quiz_id})
+  Question.all()
+  erb(:quiz)
+end

@@ -1,11 +1,12 @@
-<h1><%= quiz.name() %></h1>
+<h1><%= @quiz.name() %></h1>
 
 <% if @quiz.questions().any? %>
 
-  <% @quiz.questions.each do |question|
+<ul>
+  <% @quiz.questions.each  do |question| %>
     <li><a href='/question/<%= question.id() %>'><%= question.question() %></a></li>
     <% end %>
-
+</ul>
 <% else %>
 
 <p> There are no questions for this quiz. Add questions below. </p>
@@ -13,6 +14,8 @@
 <% end %>
 
 <form action='/quiz/<%= @quiz.id() %>' method='post'>
+
+  <input id="quiz_id" name="quiz_id" type="hidden" value="<%= @quiz.id() %>">
 
   <div class='form-group'>
     <label for='question'>Add a Question</label>
